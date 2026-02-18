@@ -40,14 +40,14 @@ class GameView(arcade.View):
         """
         Render the screen.
         """
-        arcade.set_background_color(arcade.color.AFRICAN_VIOLET)
+        arcade.set_background_color(arcade.color.BROWN)
         #CRÉATION DU PYLONE
         arcade.draw.draw_lrbt_rectangle_filled(
             0,
             SCREEN_WIDTH,
             0,
             SCREEN_HEIGHT / 2.2,
-            arcade.csscolor.DIM_GRAY)
+            arcade.csscolor.DARK_GREEN)
 
         y = SCREEN_HEIGHT / 2 + 40
         arcade.draw.draw_triangle_filled(420, y + 260,
@@ -79,7 +79,25 @@ class GameView(arcade.View):
         arcade.draw.draw_arc_filled(350, y + 110, 30, 120, arcade.csscolor.GOLD, 90, 180)
         arcade.draw.draw_arc_filled(350, y + 110, 30, 120, arcade.csscolor.GOLD, 180, 270)
 
+        points = [(370, y+118), (420, y+265), (470, y+118)]
+        arcade.draw.draw_line_strip(points, arcade.color.DARK_BLUE)
+
+        affichage = arcade.Text("Pylone et deux canon a photon!", 20, SCREEN_HEIGHT - 40, arcade.color.BARBIE_PINK)
+        affichage.draw()
+
+        points = [(435, y+247), (437, y+245), (429, y+241), (441, y+239)]
+        arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
+        points = [(435, y+238), (437, y+238), (439, y+236), (441, y+234)]
+        arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
+        points = [(405, y+247), (407, y+243), (409, y+241), (411, y+239)]
+        arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
+        points = [(405, y+238), (407, y+238), (409, y+236), (411, y+234)]
+        arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
+
         #création des canons
+
+        arcade.draw.draw_ellipse_filled(180, y - 47, 175, 12, arcade.color.BRONZE, 0)
+        arcade.draw.draw_ellipse_filled(650, y - 47, 175, 12, arcade.color.BRONZE, 0)
 
         r = arcade.rect.XYWH(180, y -62, 180, 25)
         arcade.draw.draw_rect_filled(r, arcade.csscolor.GOLD)
@@ -96,14 +114,12 @@ class GameView(arcade.View):
         arcade.draw_circle_filled(180, y + 45, 35, arcade.color.GOLD)
         arcade.draw_circle_filled(650, y + 45, 35, arcade.color.GOLD)
 
-        arcade.draw.draw_line(150, y+65, 205, y+20, arcade.color.DARK_SLATE_GRAY, 2)
-        arcade.draw.draw_line(155, y+20, 210, y+65, arcade.color.DARK_SLATE_GRAY, 2)
-        arcade.draw.draw_line(620, y+65, 675, y+20, arcade.color.DARK_SLATE_GRAY, 2)
-        arcade.draw.draw_line(625, y+20, 680, y+65, arcade.color.DARK_SLATE_GRAY, 2)
+        arcade.draw.draw_line(150, y+65, 205, y+20, arcade.color.BLACK, 4)
+        arcade.draw.draw_line(155, y+20, 210, y+65, arcade.color.BLACK, 4)
+        arcade.draw.draw_line(620, y+65, 675, y+20, arcade.color.BLACK, 4)
+        arcade.draw.draw_line(625, y+20, 680, y+65, arcade.color.BLACK, 4)
         arcade.draw_circle_filled(180, y + 40, 8, arcade.color.AQUA)
         arcade.draw_circle_filled(650, y + 40, 8, arcade.color.AQUA)
-
-
 
 
     def on_update(self, delta_time):
