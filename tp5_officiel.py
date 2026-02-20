@@ -8,14 +8,15 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.starting_template
 """
 import arcade
-import random
 
+# création de la fenetrre de la page
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 800
 WINDOW_TITLE = "Aiur"
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
+
 
 class GameView(arcade.View):
     """
@@ -40,8 +41,11 @@ class GameView(arcade.View):
         """
         Render the screen.
         """
+        # faire la couleur de fon
         arcade.set_background_color(arcade.color.BROWN)
-        #CRÉATION DU PYLONE
+
+        # CRÉATION DU PYLONE
+
         arcade.draw.draw_lrbt_rectangle_filled(
             0,
             SCREEN_WIDTH,
@@ -54,7 +58,7 @@ class GameView(arcade.View):
                                          370, y + 110,
                                          470, y + 110,
                                          arcade.color.SKY_BLUE)
-        arcade.draw.draw_triangle_filled(420, y +0,
+        arcade.draw.draw_triangle_filled(420, y + 0,
                                          370, y + 90,
                                          470, y + 90,
                                          arcade.color.SKY_BLUE)
@@ -71,7 +75,10 @@ class GameView(arcade.View):
                                          430, y + 90,
                                          arcade.color.GOLD)
 
-        arcade.draw_circle_filled( 420,y + 105, 10, arcade.color.BLUEBERRY )
+        arcade.draw_point(405, y + 105, arcade.color.DARK_BLUE, 5)
+        arcade.draw_point(435, y + 105, arcade.color.DARK_BLUE, 5)
+
+        arcade.draw_circle_filled(420, y + 105, 10, arcade.color.BLUEBERRY)
 
         arcade.draw.draw_arc_filled(490, y + 110, 30, 120, arcade.csscolor.GOLD, 0, 90)
         arcade.draw.draw_arc_filled(490, y + 110, 30, 120, arcade.csscolor.GOLD, 270, 360)
@@ -82,9 +89,10 @@ class GameView(arcade.View):
         points = [(370, y+118), (420, y+265), (470, y+118)]
         arcade.draw.draw_line_strip(points, arcade.color.DARK_BLUE)
 
+        # faire le texte en haut de l'écran
         affichage = arcade.Text("Pylone et deux canon a photon!", 20, SCREEN_HEIGHT - 40, arcade.color.BARBIE_PINK)
         affichage.draw()
-
+        # faire l'énergie s'émanent du pylone
         points = [(435, y+247), (437, y+245), (429, y+241), (441, y+239)]
         arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
         points = [(435, y+238), (437, y+238), (439, y+236), (441, y+234)]
@@ -94,22 +102,22 @@ class GameView(arcade.View):
         points = [(405, y+238), (407, y+238), (409, y+236), (411, y+234)]
         arcade.draw.draw_polygon_filled(points, arcade.color.DARK_BLUE)
 
-        #création des canons
+        # création des canons
 
         arcade.draw.draw_ellipse_filled(180, y - 47, 175, 12, arcade.color.BRONZE, 0)
         arcade.draw.draw_ellipse_filled(650, y - 47, 175, 12, arcade.color.BRONZE, 0)
 
-        r = arcade.rect.XYWH(180, y -62, 180, 25)
+        r = arcade.rect.XYWH(180, y - 62, 180, 25)
         arcade.draw.draw_rect_filled(r, arcade.csscolor.GOLD)
-        arcade.draw.draw_arc_filled(180, y -70, 35, 105, arcade.csscolor.GOLD,0 ,180 )
-        arcade.draw.draw_arc_filled(250, y -70, 35, 95, arcade.csscolor.GOLD,0 ,90 )
-        arcade.draw.draw_arc_filled(110, y -70, 35, 95, arcade.csscolor.GOLD,90 ,180 )
+        arcade.draw.draw_arc_filled(180, y - 70, 35, 105, arcade.csscolor.GOLD, 0, 180)
+        arcade.draw.draw_arc_filled(250, y - 70, 35, 95, arcade.csscolor.GOLD, 0,  90)
+        arcade.draw.draw_arc_filled(110, y - 70, 35, 95, arcade.csscolor.GOLD, 90, 180)
 
-        r = arcade.rect.XYWH(650, y -62, 180, 25)
+        r = arcade.rect.XYWH(650, y - 62, 180, 25)
         arcade.draw.draw_rect_filled(r, arcade.csscolor.GOLD)
-        arcade.draw.draw_arc_filled(650, y -70, 35, 105, arcade.csscolor.GOLD,0 ,180 )
-        arcade.draw.draw_arc_filled(720, y -70, 35, 95, arcade.csscolor.GOLD,0 ,90 )
-        arcade.draw.draw_arc_filled(580, y -70, 35, 95, arcade.csscolor.GOLD,90 ,180 )
+        arcade.draw.draw_arc_filled(650, y - 70, 35, 105, arcade.csscolor.GOLD, 0, 180)
+        arcade.draw.draw_arc_filled(720, y - 70, 35, 95, arcade.csscolor.GOLD, 0, 90)
+        arcade.draw.draw_arc_filled(580, y - 70, 35, 95, arcade.csscolor.GOLD, 90, 180)
 
         arcade.draw_circle_filled(180, y + 45, 35, arcade.color.GOLD)
         arcade.draw_circle_filled(650, y + 45, 35, arcade.color.GOLD)
@@ -121,7 +129,6 @@ class GameView(arcade.View):
         arcade.draw_circle_filled(180, y + 40, 8, arcade.color.AQUA)
         arcade.draw_circle_filled(650, y + 40, 8, arcade.color.AQUA)
 
-
     def on_update(self, delta_time):
         """
         All the logic to move, and the game logic goes here.
@@ -129,38 +136,6 @@ class GameView(arcade.View):
         need it.
         """
         self.clear()
-    def on_key_press(self, key, key_modifiers):
-        """-
-        Called whenever a key on the keyboard is pressed.
-
-        For a full list of keys, see:
-        https://api.arcade.academy/en/latest/arcade.key.html
-        """
-        pass
-
-    def on_key_release(self, key, key_modifiers):
-        """
-        Called whenever the user lets off a previously pressed key.
-        """
-        pass
-
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """
-        Called whenever the mouse moves.
-        """
-        pass
-
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        """
-        Called when the user presses a mouse button.
-        """
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """
-        Called when a user releases a mouse button.
-        """
-        pass
 
 
 def main():
@@ -178,5 +153,6 @@ def main():
     arcade.run()
 
 
+# éxécute tout le texte
 if __name__ == "__main__":
     main()
